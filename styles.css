@@ -38,7 +38,6 @@
   --ease:cubic-bezier(.22,1,.36,1);
 }
 
-
 /* light theme — only when the visitor asks for it */
 :root[data-theme="light"]{
   --bg:#eeeeee;
@@ -85,9 +84,8 @@ ul{ margin:0; padding:0; list-style:none; }
   padding-inline:var(--gutter); box-sizing:border-box;
 }
 .wrap > *{ max-width:100%; }
-.section{ overflow-x:hidden; overflow-x:clip; }   /* clip where supported, hidden for older Safari */
 figure{ margin:0; }            /* UA gives figure a 40px inline margin — never rely on that */
-.section{ padding-block:var(--section-y); }
+.section{ padding-block:var(--section-y); overflow-x:hidden; overflow-x:clip; }
 .section--tint{ background:var(--surface); }
 
 /* ---------- section heads ---------- */
@@ -98,7 +96,6 @@ figure{ margin:0; }            /* UA gives figure a 40px inline margin — never
 .eyebrow::before{ content:""; width:22px; height:2px; border-radius:2px; background:var(--amber); }
 .head{ display:grid; gap:var(--sp-3); max-width:60ch; margin-bottom:clamp(2.5rem,5vw,3.75rem); }
 .head p{ color:var(--ink-2); font-size:var(--t-1); line-height:1.6; }
-.head--center{ margin-inline:auto; justify-items:center; text-align:center; }
 
 /* ---------- buttons ---------- */
 .btn{
@@ -352,7 +349,7 @@ figure{ margin:0; }            /* UA gives figure a 40px inline margin — never
 /* ---------- projects ---------- */
 .proj-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr)); gap:var(--sp-4); }
 .proj{
-  display:flex; flex-direction:column; overflow:hidden;
+  position:relative; display:flex; flex-direction:column; overflow:hidden;
   background:var(--surface); border:1px solid var(--line); border-radius:var(--r-m);
   transition:transform .5s var(--ease), box-shadow .5s var(--ease), border-color .35s;
 }
@@ -378,8 +375,7 @@ figure{ margin:0; }            /* UA gives figure a 40px inline margin — never
 }
 .proj-btn .arw{ transition:transform .4s var(--ease); }
 .proj:hover .proj-btn .arw{ transform:translateX(4px); }
-.proj-btn::before{ content:""; position:absolute; inset:0; }
-.proj{ position:relative; }
+.proj-btn::before{ content:""; position:absolute; inset:0; }   /* whole card is the link target */
 
 /* ---------- process ---------- */
 .process{ position:relative; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr)); gap:var(--sp-4); }
@@ -440,13 +436,12 @@ figure{ margin:0; }            /* UA gives figure a 40px inline margin — never
 }
 .band h2{ max-width:20ch; font-size:clamp(1.5rem,1.1rem + 2vw,2.6rem); }
 .band p{ color:var(--band-mute); max-width:52ch; font-size:var(--t--1); line-height:1.7; }
-.band .btn{ margin-top:var(--sp-2); }
+.band .btn{ margin-top:var(--sp-2); background:var(--amber); color:#222831; }
 @media (max-width:520px){
   .band{ border-radius:var(--r-m); }
   .band h2{ max-width:none; }
   .band .btn{ width:100%; }
 }
-.band .btn{ background:var(--amber); color:#222831; }
 
 /* ---------- forms ---------- */
 .form{ display:grid; gap:var(--sp-4); }
@@ -463,6 +458,7 @@ figure{ margin:0; }            /* UA gives figure a 40px inline margin — never
 /* selects: native chrome replaced with a themed control */
 .field select{
   -webkit-appearance:none; appearance:none;
+  color-scheme:dark;               /* the native popup follows the page theme */
   padding-right:2.75rem; cursor:pointer;
   background-repeat:no-repeat;
   background-position:right 1rem center;
@@ -471,8 +467,6 @@ figure{ margin:0; }            /* UA gives figure a 40px inline margin — never
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none'%3E%3Cpath d='M1 1.5 7 7.5l6-6' stroke='%23b3bac4' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 .field select:hover{ border-color:var(--ink-3); }
-/* the native popup follows the page theme instead of always rendering light */
-.field select{ color-scheme:dark; }
 .field select option{ background:var(--surface); color:var(--ink); padding:.5rem; }
 .field select:invalid,.field select option[value=""]{ color:var(--ink-3); }
 

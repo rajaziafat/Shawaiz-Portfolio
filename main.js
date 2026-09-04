@@ -327,8 +327,9 @@
       e.preventDefault();
       var valid = true, first = null;
       form.querySelectorAll('[name]').forEach(function (f) {
-        if (!validate(f) && !first) { valid = false; first = f; }
-        else if (!validate(f)) valid = false;
+        if (validate(f)) return;
+        valid = false;
+        if (!first) first = f;
       });
       if (!valid) { if (first) first.focus(); return; }
       if (ok) {
