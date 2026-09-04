@@ -92,16 +92,17 @@
   /* ---------------- theme ---------------- */
   var stored = null;
   try { stored = localStorage.getItem('theme'); } catch (e) {}
-  if (stored === 'dark' || stored === 'light') root.setAttribute('data-theme', stored);
+  // dark is the default; only an explicit 'light' choice changes it
+  if (stored === 'light') root.setAttribute('data-theme', 'light');
+  else root.removeAttribute('data-theme');
 
   var themeBtn = document.querySelector('[data-theme-toggle]');
   if (themeBtn) {
     themeBtn.addEventListener('click', function () {
-      var current = root.getAttribute('data-theme') ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      var next = current === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      try { localStorage.setItem('theme', next); } catch (e) {}
+      var isLight = root.getAttribute('data-theme') === 'light';
+      if (isLight) root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', 'light');
+      try { localStorage.setItem('theme', isLight ? 'dark' : 'light'); } catch (e) {}
     });
   }
 
