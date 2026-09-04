@@ -19,7 +19,7 @@
 <header class="nav">
   <a class="brand" href="index.html"><span class="dot"></span> Shawaiz</a>
   <nav aria-label="Primary">
-    <ul class="nav-links">
+    <ul class="nav-links" id="primary-menu">
       <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#experience">Experience</a></li>
       <li><a href="index.html#services">Services</a></li>
@@ -32,8 +32,9 @@
     <button class="icon-btn" data-theme-toggle aria-label="Toggle colour theme">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
     </button>
-    <button class="icon-btn nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+    <button class="icon-btn nav-toggle" data-nav-toggle aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu">
+      <svg class="ico-open" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+      <svg class="ico-close" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
     </button>
   </div>
 </header>

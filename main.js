@@ -107,22 +107,54 @@
 
   /* ---------------- nav ---------------- */
   var nav = document.querySelector('.nav');
-  function onScroll() { if (nav) nav.classList.toggle('is-stuck', window.scrollY > 24); }
+  function onScroll() {
+    if (!nav || document.body.classList.contains('menu-open')) return;
+    nav.classList.toggle('is-stuck', window.scrollY > 24);
+  }
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
   var toggle = document.querySelector('[data-nav-toggle]');
-  if (toggle) {
-    toggle.addEventListener('click', function () {
-      var open = document.body.classList.toggle('menu-open');
-      toggle.setAttribute('aria-expanded', String(open));
+  var menu = document.getElementById('primary-menu');
+  if (toggle && menu) {
+    var scrollY = 0;
+
+    function openMenu() {
+      // iOS Safari ignores body{overflow:hidden}; pin the body and restore the offset on close
+      scrollY = window.scrollY;
+      document.body.style.top = -scrollY + 'px';
+      document.body.classList.add('menu-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close menu');
+      var first = menu.querySelector('a');
+      if (first) first.focus({ preventScroll: true });
+    }
+
+    function closeMenu(refocus) {
+      document.body.classList.remove('menu-open');
+      document.body.style.top = '';
+      window.scrollTo(0, scrollY);
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+      if (refocus) toggle.focus({ preventScroll: true });
+    }
+
+    function isOpen() { return document.body.classList.contains('menu-open'); }
+
+    toggle.addEventListener('click', function () { isOpen() ? closeMenu(true) : openMenu(); });
+
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { if (isOpen()) closeMenu(false); });
     });
-    document.querySelectorAll('.nav-links a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        document.body.classList.remove('menu-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && isOpen()) closeMenu(true);
     });
+
+    // keep the menu shut when the layout crosses back to the desktop breakpoint
+    var wide = window.matchMedia('(min-width: 1025px)');
+    var onWide = function (e) { if (e.matches && isOpen()) closeMenu(false); };
+    wide.addEventListener ? wide.addEventListener('change', onWide) : wide.addListener(onWide);
   }
 
   /* ---------------- project cards ---------------- */
