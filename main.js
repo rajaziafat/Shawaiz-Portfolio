@@ -121,18 +121,26 @@
     var scrollY = 0;
 
     function openMenu() {
-      // iOS Safari ignores body{overflow:hidden}; pin the body and restore the offset on close
       scrollY = window.scrollY;
-      document.body.style.top = -scrollY + 'px';
+      // paint the menu first; pinning the body forces a full-document reflow, and doing
+      // that in the same frame stalls the open by however long the page takes to relayout
       document.body.classList.add('menu-open');
       toggle.setAttribute('aria-expanded', 'true');
       toggle.setAttribute('aria-label', 'Close menu');
-      var first = menu.querySelector('a');
-      if (first) first.focus({ preventScroll: true });
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          if (!isOpen()) return;
+          // iOS Safari ignores body{overflow:hidden}; pin the body instead
+          document.body.style.top = -scrollY + 'px';
+          document.body.classList.add('is-pinned');
+          var first = menu.querySelector('a');
+          if (first) first.focus({ preventScroll: true });
+        });
+      });
     }
 
     function closeMenu(refocus) {
-      document.body.classList.remove('menu-open');
+      document.body.classList.remove('menu-open', 'is-pinned');
       document.body.style.top = '';
       window.scrollTo(0, scrollY);
       toggle.setAttribute('aria-expanded', 'false');
