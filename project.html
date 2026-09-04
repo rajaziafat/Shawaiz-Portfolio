@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Case study — Shawaiz</title>
+<meta name="description" content="Project case study by Shawaiz — problem, approach, outcome and stack.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23222831'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23FFD369'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <a class="brand" href="index.html"><span class="dot"></span> Shawaiz</a>
+  <nav aria-label="Primary">
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#process">Process</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="nav-actions">
+    <button class="icon-btn" data-theme-toggle aria-label="Toggle colour theme">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    </button>
+    <button class="icon-btn nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===== case hero ===== -->
+  <section class="case-hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a><span>/</span><a href="index.html#work">Work</a><span>/</span><b data-case="crumb">Project</b>
+      </nav>
+      <span class="case-badge" data-case="badge">Project</span>
+      <h1 data-case="title">Project</h1>
+      <p class="case-tagline" data-case="tagline"></p>
+      <div class="case-meta">
+        <div><span>Role</span><b data-case="role"></b></div>
+        <div><span>Timeline</span><b data-case="timeline"></b></div>
+        <div><span>Team</span><b data-case="team"></b></div>
+        <div><span>Year</span><b data-case="year"></b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== cover ===== -->
+  <section class="case-cover-wrap">
+    <div class="wrap">
+      <figure class="case-figure">
+        <img class="case-cover" data-case="cover" src="" alt="" width="1600" height="900">
+        <figcaption data-case="covercap"></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== body ===== -->
+  <section class="section" style="padding-top:var(--sp-7)">
+    <div class="wrap case-body">
+      <article>
+        <div class="case-block">
+          <span class="eyebrow">01 — Context</span>
+          <h2>The problem</h2>
+          <p data-case="problem"></p>
+        </div>
+
+        <blockquote class="pull" data-case="pull"></blockquote>
+
+        <div class="case-block">
+          <span class="eyebrow">02 — Approach</span>
+          <h2>What I did</h2>
+          <p data-case="approach"></p>
+          <ul class="tick" data-case="steps"></ul>
+        </div>
+
+        <div class="case-block">
+          <span class="eyebrow">03 — Outcome</span>
+          <h2>What changed</h2>
+          <p data-case="outcome"></p>
+        </div>
+      </article>
+
+      <aside class="case-side">
+        <div class="side-card">
+          <h3>Stack</h3>
+          <ul class="stack" data-case="stack"></ul>
+        </div>
+        <div class="side-card">
+          <h3>Results</h3>
+          <ul class="result" data-case="results"></ul>
+        </div>
+        <div class="side-card side-card--cta">
+          <h3>Working on something similar?</h3>
+          <p>I take on a few projects each quarter. Tell me what you're building.</p>
+          <a class="btn btn--amber" href="contact.html">Start a project <span class="arw">&rarr;</span></a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== prev / next ===== -->
+  <section class="section section--tint" style="padding-block:var(--sp-6)">
+    <div class="wrap">
+      <div class="pager" data-case="pager"></div>
+    </div>
+  </section>
+
+  <!-- ===== more work ===== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="head" data-reveal><span class="eyebrow">Keep looking</span><h2>More projects.</h2></div>
+      <div class="proj-grid" data-projects data-limit="3"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="index.html"><span class="dot"></span> Shawaiz</a>
+        <p>Product and interface design for teams who care about the details. Based in Lahore, working worldwide.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#work">Work</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="mailto:hello@shawaiz.design">hello@shawaiz.design</a></li>
+          <li><a href="tel:+923001234567">+92 300 123 4567</a></li>
+          <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://dribbble.com/" target="_blank" rel="noopener">Dribbble</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> Shawaiz. All rights reserved.</span>
+      <span>Designed &amp; built with care.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

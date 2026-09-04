@@ -1,0 +1,11 @@
+Placeholder project thumbnails from Unsplash (Unsplash License — free to use,
+attribution appreciated but not required). Replace with your real work.
+
+  meridian.jpg  unsplash.com/photos/1551288049-bebda4e38f71  (analytics dashboard)
+  arcadia.jpg   unsplash.com/photos/1454165804606-c3d57bc86b40 (planning session)
+  vellum.jpg    unsplash.com/photos/1559028012-481c04fa702d  (design work on screen)
+  kestrel.jpg   unsplash.com/photos/1531403009284-440f080d1e12 (wireframe wall)
+  foundry.jpg   unsplash.com/photos/1587440871875-191322ee64b0 (workshop sketching)
+  lumen.jpg     unsplash.com/photos/1522202176988-66273c2fd55f (team session)
+
+Keep the same filenames when swapping in your own images (~1600x1040, under 400 KB).
