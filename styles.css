@@ -151,7 +151,7 @@ figure{ margin:0; }            /* UA gives figure a 40px inline margin — never
 .nav-toggle{ display:none; }
 @media (max-width:1024px){
   .nav-links{
-    position:fixed; inset:0; z-index:-1;
+    position:fixed; inset:0; z-index:1;   /* above the bar's own background, below its buttons */
     flex-direction:column; justify-content:center; align-items:center;
     gap:var(--sp-4); background:var(--bg);
     font-size:var(--t-2); font-weight:800;
@@ -164,6 +164,10 @@ figure{ margin:0; }            /* UA gives figure a 40px inline margin — never
     transition:opacity .3s ease, transform .45s var(--ease), visibility 0s;
   }
   .nav-links a{ color:var(--ink); padding-block:.5rem; }
+  /* brand and buttons must stay clickable on top of the open overlay */
+  .brand,.nav-actions{ position:relative; z-index:2; }
+  /* while open, the bar matches the overlay instead of floating a blurred strip over it */
+  body.menu-open .nav{ background:var(--bg); -webkit-backdrop-filter:none; backdrop-filter:none; border-bottom-color:transparent; }
   .nav-links a::after{ height:3px; }
   .nav-toggle{ display:grid; }
   .ico-close{ display:none; }
